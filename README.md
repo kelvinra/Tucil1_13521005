@@ -9,7 +9,7 @@ Permainan kartu 24 adalah permainan matematika yang menggunakan kartu standar de
 ## Cara menjalankan program 
 
 Untuk menjalankan program, jalankan run.bat pada root directory dengan menuliskan "./run.bat"
-==
+
 Untuk Pilihan 1 yaitu Input angka manual contoh dari inputannya :
 A 4 8 Q
 2 3 4 5
