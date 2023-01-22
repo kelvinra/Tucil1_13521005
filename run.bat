@@ -1,0 +1,1 @@
+g++ .\src\24CardGame.cpp -o bin\24CardGame && .\bin\24CardGame.exe
