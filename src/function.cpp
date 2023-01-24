@@ -34,17 +34,19 @@ void validmutasi(vector <int> &result, vector <int> old){
     
 
 
-void mutasi(double arr[], vector <int> &result, int l, int r) {
-    if (l == r) {
-        for (int i = 0; i < 4; i++) {
-            result.push_back(arr[i]);
-        }
-    } 
-    else {
-        for (int i = l; i <= r; i++) {
-            swap(arr[l], arr[i]);
-            mutasi(arr, result, l+1, r);
-            swap(arr[l], arr[i]);
+void mutasi(double arr[], vector <int> &result) {
+    for (int i=0;i<4;i++){
+        for (int j=0;j<4;j++){
+            for (int k=0;k<4;k++){
+                for (int l=0;l<4;l++){
+                    if (i != j && i != k && i != l && j != k && j != l && k != l ){
+                        result.push_back(arr[i]);
+                        result.push_back(arr[j]);
+                        result.push_back(arr[k]);
+                        result.push_back(arr[l]);
+                    }
+                }
+            }
         }
     }
 }
@@ -140,6 +142,9 @@ char convertop(int op){
         case 3:
             return '/';
             break;
+        default:
+            return ' ';
+            break;
     }
 
 }
@@ -171,6 +176,9 @@ float operation (float x, float y, char z){
             break;
         case '/':
             return x / y;
+            break;
+        default:
+            return 0;
             break;
     }
 }

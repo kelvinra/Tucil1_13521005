@@ -21,9 +21,12 @@ int main()
     cout << "                                  WELCOME";
     cout << " TO";
     cout << " 24 CARD GAME" << std::endl;
+    cout << "==========================================================================================" << endl;
+    
     cout << " PLEASE CHOOSE TYPE OF INPUT" << std::endl;
     cout << " 1. MANUAL" << std::endl;
     cout << " 2. RANDOM" << std::endl;
+    cout << " 3. EXIT" << std::endl;
     vector <char> op;
     vector <int> numb1;
     vector <int> temp;
@@ -111,9 +114,13 @@ int main()
             }
             cout << std::endl;
             break;
+        case 3:
+            cout << " LETS PLAY AGAIN SOMETIME... :(" << std::endl;
+            return 0;
+            break;
 }
-    auto start = Clock::now();
-    mutasi(numb,temp, 0, 3);
+    auto start = chrono::steady_clock::now();
+    mutasi(numb,temp);
     validmutasi(numb1, temp);
     operatorr(op);
     int x = 0;
@@ -128,17 +135,18 @@ int main()
             solution5(op,numb1[i], numb1[i+1], numb1[i+2], numb1[i+3], &x , j, file, &count);
             j += 3;
         }
+        auto end = chrono::steady_clock::now();
         
         cout << x << " Solution found" << std::endl;
         cout << endl;
         for (int i=0; i < count;i++){
             cout << file[i] << std::endl;
         }
-        auto end = Clock::now();
-        auto ms = chrono::duration_cast<chrono::milliseconds>(end - start).count();
+        double ms = chrono::duration_cast<chrono::microseconds>(end - start).count()*0.001;
         cout << " Time taken by program is : " << ms << " ms" << std::endl;
         string save;
         string name;
+        while (true) {
         cout << " DO U WANT TO SAVE THE RESULT ? (yay/nay) : ";
         cin >> save;
         if (save == "yay"){
@@ -158,11 +166,34 @@ int main()
                 myfile << " " << file[i] << std::endl;
             }
             myfile.close();
+            cout << " FILE SAVED" << std::endl;
+            break;
         }
         else if (save == "nay"){
             cout << " SIPSIP" << std::endl;
+            break;
         }
         else {
             cout << " INVALID INPUT" << std::endl;
         }
+        }
+        string again;
+        while (true){
+        cout << " DO U WANT TO PLAY AGAIN ? (yay/nay) : ";
+        cin >> again;
+        if (again == "yay"){
+            cout << " LETS PLAY AGAIN" << std::endl;
+            main();
+            break;
+        }
+        else if (again == "nay"){
+            cout << " BYE BYE" << std::endl;
+            break;
+        }
+        else {
+            cout << " INVALID INPUT" << std::endl;
+        }
+        }
+        
+
 }
